@@ -10,6 +10,16 @@ services:
     depends_on:
       - postgres
 
+  order_service:
+    build: ./order_service
+    environment:
+      - FLASK_APP=manage.py
+      - FLASK_ENV=development
+    ports:
+      - '5002:5002'
+    depends_on:
+      - postgres
+
   postgres:
     image: postgres:13
     environment:
